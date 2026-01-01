@@ -289,11 +289,12 @@ function initGlobalMap() {
 }
 
 /**
- * Initialize Development Notice Banner
+ * Initialize Development Notice Modal with countdown
  */
 function initDevNotice() {
   const notice = document.getElementById('devNotice');
   const closeBtn = document.getElementById('devNoticeClose');
+  const countdown = document.querySelector('.dev-notice-countdown');
 
   if (!notice || !closeBtn) return;
 
@@ -303,8 +304,36 @@ function initDevNotice() {
     return;
   }
 
-  closeBtn.addEventListener('click', () => {
+  let seconds = 5;
+
+  // Countdown timer
+  const timer = setInterval(() => {
+    seconds--;
+    if (countdown) {
+      countdown.textContent = `(${seconds})`;
+    }
+    if (seconds <= 0) {
+      clearInterval(timer);
+      closeNotice();
+    }
+  }, 1000);
+
+  function closeNotice() {
     notice.classList.add('hidden');
     sessionStorage.setItem('devNoticeDismissed', 'true');
+  }
+
+  // Click to close immediately
+  closeBtn.addEventListener('click', () => {
+    clearInterval(timer);
+    closeNotice();
+  });
+
+  // Click overlay to close
+  notice.addEventListener('click', (e) => {
+    if (e.target === notice) {
+      clearInterval(timer);
+      closeNotice();
+    }
   });
 }
