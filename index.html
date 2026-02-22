@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sportis - Nền Tảng Đặt Sân Thể Thao</title>
-  <meta name="description" content="Đặt sân thể thao dễ dàng, nhanh chóng. Tìm sân gần bạn, đặt lịch online, thanh toán an toàn.">
+  <title>Sportis - Sports Venue Booking Platform</title>
+  <meta name="description" content="Book sports venues easily and quickly. Find courts near you, book online, pay securely. No phone calls needed.">
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon.png">
@@ -19,6 +19,12 @@
   <link rel="stylesheet" href="./styles-mobile.css" media="(max-width: 767px)">
 </head>
 <body>
+  <!-- Announcement Bar (fixed, above header) -->
+  <div class="announcement-bar" id="announcementBar" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1001; background: linear-gradient(90deg, var(--primary), #8b5cf6); color: #fff; text-align: center; padding: 10px 40px 10px 16px; font-size: 0.85rem; font-weight: 500;">
+    🚀 Now live at <a href="https://www.sportis-app.com" target="_blank" rel="noopener" style="color: #fff; text-decoration: underline; font-weight: 700;">www.sportis-app.com</a> — Book your first court today!
+    <button id="closeAnnouncement" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(255,255,255,0.8); cursor: pointer; font-size: 1.1rem; line-height: 1; padding: 4px;">✕</button>
+  </div>
+
   <!-- Header -->
   <header class="header" id="header">
     <nav class="nav container">
@@ -26,10 +32,10 @@
         <img src="./images/logo/logo-full.png" alt="Sportis" height="36">
       </a>
       <div class="nav-links">
-        <a href="#features" class="nav-link">Tính Năng</a>
-        <a href="#how-it-works" class="nav-link">Cách Hoạt Động</a>
-        <a href="#for-players" class="nav-link">Người Chơi</a>
-        <a href="#for-venues" class="nav-link">Chủ Sân</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#for-players" class="nav-link">Players</a>
+        <a href="#for-venues" class="nav-link">Venues</a>
       </div>
       <div class="nav-actions">
         <!-- Language Selector -->
@@ -40,14 +46,14 @@
               <line x1="2" y1="12" x2="22" y2="12"></line>
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
-            <span class="lang-current">VI</span>
+            <span class="lang-current">EN</span>
           </button>
           <div class="lang-dropdown" id="langDropdown">
-            <button class="lang-option active" data-lang="vi">
+            <button class="lang-option" data-lang="vi">
               <span class="lang-flag">🇻🇳</span>
               <span>Tiếng Việt</span>
             </button>
-            <button class="lang-option" data-lang="en">
+            <button class="lang-option active" data-lang="en">
               <span class="lang-flag">🇺🇸</span>
               <span>English</span>
             </button>
@@ -66,7 +72,7 @@
           </div>
         </div>
 
-        <button class="btn-theme" id="themeToggle" title="Chuyển đổi theme">
+        <button class="btn-theme" id="themeToggle" title="Toggle theme">
           <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -82,8 +88,8 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
-        <a href="/login" class="nav-link hide-mobile">Đăng Nhập</a>
-        <a href="/player/search" class="btn btn-primary">Đặt Sân</a>
+        <a href="/login" class="nav-link hide-mobile">Sign In</a>
+        <a href="/player/search" class="btn btn-primary">Book Now</a>
         <button class="btn-menu" id="menuToggle">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -95,12 +101,12 @@
     </nav>
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#features" class="mobile-link">Tính Năng</a>
-      <a href="#how-it-works" class="mobile-link">Cách Hoạt Động</a>
-      <a href="#for-players" class="mobile-link">Người Chơi</a>
-      <a href="#for-venues" class="mobile-link">Chủ Sân</a>
-      <a href="/login" class="mobile-link">Đăng Nhập</a>
-      <a href="/player/search" class="btn btn-primary btn-block">Đặt Sân Ngay</a>
+      <a href="#features" class="mobile-link">Features</a>
+      <a href="#how-it-works" class="mobile-link">How It Works</a>
+      <a href="#for-players" class="mobile-link">Players</a>
+      <a href="#for-venues" class="mobile-link">Venues</a>
+      <a href="/login" class="mobile-link">Sign In</a>
+      <a href="/player/search" class="btn btn-primary btn-block">Book Now</a>
     </div>
   </header>
 
@@ -120,17 +126,17 @@
           <div class="hero-text">
             <div class="badge">
               <span class="badge-dot"></span>
-              Đặt sân trong 30 giây
+              Book in 30 seconds
             </div>
 
             <h1 class="hero-title">
-              Đặt sân thể thao
-              <span class="text-primary">dễ dàng & nhanh</span>
+              Book sports venues
+              <span class="text-primary">easy & fast</span>
             </h1>
 
             <p class="hero-subtitle">
-              Tích hợp Google Maps - tìm sân gần bạn chỉ với một chạm.
-              Đặt lịch online, thanh toán an toàn. Không cần gọi điện.
+              Integrated with Google Maps - find venues near you with one tap.
+              Book online, pay securely. No phone calls needed.
             </p>
 
             <!-- Location Badge -->
@@ -139,7 +145,7 @@
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
-              <span>Tự động phát hiện vị trí của bạn</span>
+              <span>Auto-detect your location</span>
             </div>
 
             <!-- Search Bar -->
@@ -149,10 +155,10 @@
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                <input type="text" placeholder="Tìm sân theo địa điểm..." class="search-input">
+                <input type="text" placeholder="Search by location..." class="search-input">
               </div>
               <a href="/player/search" class="btn btn-primary btn-search">
-                Tìm kiếm
+                Search
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
@@ -164,35 +170,35 @@
           <!-- Right Card -->
           <div class="hero-card-wrapper">
             <div class="hero-card">
-              <h3 class="card-title">Đặt sân nhanh</h3>
+              <h3 class="card-title">Quick Book</h3>
 
               <div class="form-group">
-                <label class="form-label">Môn thể thao</label>
+                <label class="form-label">Sport</label>
                 <select class="form-select">
                   <option value="tennis">🎾 Tennis</option>
-                  <option value="badminton">🏸 Cầu lông</option>
-                  <option value="football">⚽ Bóng đá</option>
+                  <option value="badminton">🏸 Badminton</option>
+                  <option value="football">⚽ Football</option>
                   <option value="pickleball">🥒 Pickleball</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label class="form-label">Địa điểm</label>
+                <label class="form-label">Location</label>
                 <div class="form-input-icon">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
-                  <input type="text" placeholder="Quận 7, TP.HCM" class="form-input">
+                  <input type="text" placeholder="District 7, HCMC" class="form-input">
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="form-label">Ngày & Giờ</label>
-                <input type="text" placeholder="Hôm nay, 18:00 - 19:00" class="form-input">
+                <label class="form-label">Date & Time</label>
+                <input type="text" placeholder="Today, 6:00 PM - 7:00 PM" class="form-input">
               </div>
 
-              <a href="/player/search" class="btn btn-primary btn-block">Tìm sân trống</a>
+              <a href="/player/search" class="btn btn-primary btn-block">Find Available Courts</a>
             </div>
 
             <!-- Floating Cards -->
@@ -208,7 +214,7 @@
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
               </svg>
-              <span class="float-text">Đặt trong 30s</span>
+              <span class="float-text">Book in 30s</span>
             </div>
           </div>
         </div>
@@ -229,11 +235,11 @@
       <div class="container">
         <div class="section-header">
           <div>
-            <h2 class="section-title">Sân Nổi Bật</h2>
-            <p class="section-subtitle">Được đánh giá cao bởi người chơi</p>
+            <h2 class="section-title">Featured Venues</h2>
+            <p class="section-subtitle">Top-rated by players</p>
           </div>
           <a href="/player/search" class="link-arrow hide-mobile">
-            Xem tất cả →
+            View all →
           </a>
         </div>
 
@@ -256,18 +262,18 @@
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                Quận 7
+                District 7
               </div>
               <div class="venue-footer">
                 <span class="venue-price">150k/h</span>
-                <span class="venue-book">Đặt ngay</span>
+                <span class="venue-book">Book now</span>
               </div>
             </div>
           </a>
 
           <a href="/player/search" class="venue-card">
             <div class="venue-image">
-              <img src="images/venues/venue_badminton_indoor_1765545419913.png" alt="Sân Cầu Lông Thủ Đức">
+              <img src="images/venues/venue_badminton_indoor_1765545419913.png" alt="Badminton Court Thu Duc">
             </div>
             <div class="venue-content">
               <div class="venue-meta">
@@ -275,26 +281,26 @@
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                 </svg>
                 <span class="venue-rating">4.8</span>
-                <span class="venue-sport">• Cầu Lông</span>
+                <span class="venue-sport">• Badminton</span>
               </div>
-              <h3 class="venue-name">Sân Cầu Lông Thủ Đức</h3>
+              <h3 class="venue-name">Badminton Court Thu Duc</h3>
               <div class="venue-location">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                Thủ Đức
+                Thu Duc
               </div>
               <div class="venue-footer">
                 <span class="venue-price">80k/h</span>
-                <span class="venue-book">Đặt ngay</span>
+                <span class="venue-book">Book now</span>
               </div>
             </div>
           </a>
 
           <a href="/player/search" class="venue-card">
             <div class="venue-image">
-              <img src="images/venues/venue_football_field_1765545455344.png" alt="Sân Bóng Đá Mini Gò Vấp">
+              <img src="images/venues/venue_football_field_1765545455344.png" alt="Mini Football Field Go Vap">
             </div>
             <div class="venue-content">
               <div class="venue-meta">
@@ -302,19 +308,19 @@
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                 </svg>
                 <span class="venue-rating">4.7</span>
-                <span class="venue-sport">• Bóng Đá</span>
+                <span class="venue-sport">• Football</span>
               </div>
-              <h3 class="venue-name">Sân Bóng Đá Mini Gò Vấp</h3>
+              <h3 class="venue-name">Mini Football Field Go Vap</h3>
               <div class="venue-location">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                Gò Vấp
+                Go Vap
               </div>
               <div class="venue-footer">
                 <span class="venue-price">300k/h</span>
-                <span class="venue-book">Đặt ngay</span>
+                <span class="venue-book">Book now</span>
               </div>
             </div>
           </a>
@@ -337,11 +343,11 @@
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                Quận 1
+                District 1
               </div>
               <div class="venue-footer">
                 <span class="venue-price">120k/h</span>
-                <span class="venue-book">Đặt ngay</span>
+                <span class="venue-book">Book now</span>
               </div>
             </div>
           </a>
@@ -353,9 +359,9 @@
     <section class="section" id="for-players">
       <div class="container">
         <div class="section-header section-header-center">
-          <div class="badge badge-center">Dành cho người chơi</div>
-          <h2 class="section-title">Tính Năng Vượt Trội</h2>
-          <p class="section-subtitle">Những vấn đề bạn gặp hàng ngày - chúng tôi đã giải quyết</p>
+          <div class="badge badge-center">For Players</div>
+          <h2 class="section-title">Killer Features</h2>
+          <p class="section-subtitle">The problems you face daily — we've solved them</p>
         </div>
 
         <div class="features-grid">
@@ -368,15 +374,15 @@
                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
               </svg>
             </div>
-            <h3 class="feature-title">Chia Tiền Nhóm Dễ Dàng</h3>
+            <h3 class="feature-title">Easy Group Payment Splitting</h3>
             <p class="feature-desc">
-              Chỉ cần một người đặt sân, hệ thống sẽ tự động tạo link thanh toán để chia sẻ cho cả nhóm.
-              Mỗi người tự thanh toán phần của mình qua Momo, ZaloPay hoặc chuyển khoản -
-              <strong>không cần tạo tài khoản, không cần cài ứng dụng.</strong>
+              One person books the court, the system auto-generates a payment link to share with the group.
+              Each person pays their share via Momo, ZaloPay, or bank transfer —
+              <strong>no account creation, no app install needed.</strong>
             </p>
             <div class="feature-problem">
-              <span class="problem-label">Giải quyết:</span>
-              Loại bỏ hoàn toàn việc phải đi đòi tiền từng người sau mỗi buổi chơi.
+              <span class="problem-label">Solves:</span>
+              Completely eliminates chasing each person for money after every game.
             </div>
           </div>
 
@@ -387,14 +393,14 @@
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
               </svg>
             </div>
-            <h3 class="feature-title">Giữ Chỗ An Toàn 15 Phút</h3>
+            <h3 class="feature-title">15-Minute Secure Hold</h3>
             <p class="feature-desc">
-              Khi bạn chọn một khung giờ, hệ thống sẽ giữ chỗ độc quyền cho bạn trong 15 phút để hoàn tất thanh toán.
-              Không ai có thể "chen ngang" trong thời gian này.
+              When you select a time slot, the system exclusively holds it for you for 15 minutes to complete payment.
+              No one can "jump the queue" during this time.
             </p>
             <div class="feature-problem">
-              <span class="problem-label">Giải quyết:</span>
-              Không còn mất slot vì người khác thanh toán nhanh hơn vài giây.
+              <span class="problem-label">Solves:</span>
+              No more losing slots because someone else paid a few seconds faster.
             </div>
           </div>
 
@@ -407,14 +413,14 @@
                 <line x1="3" y1="10" x2="21" y2="10"></line>
               </svg>
             </div>
-            <h3 class="feature-title">Đặt Định Kỳ, Hủy Linh Hoạt</h3>
+            <h3 class="feature-title">Recurring Booking, Flexible Cancellation</h3>
             <p class="feature-desc">
-              Đặt sân định kỳ theo tuần (ví dụ: mỗi thứ Ba lúc 7 giờ tối) nhưng vẫn có thể hủy từng buổi riêng lẻ
-              mà không ảnh hưởng đến các buổi còn lại.
+              Book courts on a weekly basis (e.g., every Tuesday at 7 PM) but still cancel individual sessions
+              without affecting the remaining bookings.
             </p>
             <div class="feature-problem">
-              <span class="problem-label">Giải quyết:</span>
-              Hầu hết các nền tảng khác bắt buộc "hủy tất hoặc giữ tất" - không phù hợp với lịch trình thực tế.
+              <span class="problem-label">Solves:</span>
+              Most other platforms force "cancel all or keep all" — not practical for real schedules.
             </div>
           </div>
 
@@ -427,14 +433,14 @@
                 <line x1="20" y1="8" x2="20" y2="14"></line>
               </svg>
             </div>
-            <h3 class="feature-title">Tìm Người Chơi Cùng Trình Độ</h3>
+            <h3 class="feature-title">Find Players at Your Level</h3>
             <p class="feature-desc">
-              Hệ thống đánh giá kỹ năng theo thang 0-7, được xác minh qua kết quả các trận đấu thực tế.
-              Tìm đối thủ hoặc đồng đội phù hợp với năng lực của bạn.
+              Skill rating system on a 0-7 scale, verified through actual match results.
+              Find opponents or teammates that match your ability.
             </p>
             <div class="feature-problem">
-              <span class="problem-label">Giải quyết:</span>
-              Tránh tình trạng người "Trung bình" gặp người "Mới chơi" - làm hỏng trải nghiệm của cả hai bên.
+              <span class="problem-label">Solves:</span>
+              Avoids "Intermediate" players facing "Beginners" — ruining the experience for both sides.
             </div>
           </div>
 
@@ -445,13 +451,13 @@
                 <path d="M9 12l2 2 4-4"></path>
               </svg>
             </div>
-            <h3 class="feature-title">Chính Sách Vắng Mặt Công Bằng</h3>
+            <h3 class="feature-title">Fair No-Show Policy</h3>
             <p class="feature-desc">
-              Nếu bạn không đến buổi đã đặt, 30% số tiền phạt sẽ được chuyển thành credit cho lần đặt sân tiếp theo.
+              If you miss a booked session, 30% of the penalty fee is converted to credit for your next booking.
             </p>
             <div class="feature-problem">
-              <span class="problem-label">Giải quyết:</span>
-              Bảo vệ quyền lợi chủ sân nhưng vẫn giữ chân người chơi thay vì đẩy họ sang nền tảng khác.
+              <span class="problem-label">Solves:</span>
+              Protects venue owner revenue while retaining players instead of pushing them to other platforms.
             </div>
           </div>
 
@@ -464,14 +470,14 @@
                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
               </svg>
             </div>
-            <h3 class="feature-title">Cộng Đồng Thể Thao</h3>
+            <h3 class="feature-title">Sports Community</h3>
             <p class="feature-desc">
-              Kết nối với người chơi cùng sở thích, chia sẻ kinh nghiệm, đặt sân cùng nhau.
-              Giao tiếp trực tiếp với chủ sân, nhận hỗ trợ từ nền tảng.
+              Connect with players who share your interests, share experiences, and book courts together.
+              Communicate directly with venue owners, get support from the platform.
             </p>
             <div class="feature-problem">
-              <span class="problem-label">Giải quyết:</span>
-              Xây dựng mạng lưới thể thao - không chỉ đặt sân mà còn tạo kết nối bền vững.
+              <span class="problem-label">Solves:</span>
+              Building a sports network — not just booking courts, but creating lasting connections.
             </div>
           </div>
         </div>
@@ -482,29 +488,29 @@
     <section class="section section-alt" id="how-it-works">
       <div class="container">
         <div class="section-header section-header-center">
-          <h2 class="section-title">Chỉ 3 Bước Đơn Giản</h2>
-          <p class="section-subtitle">Đặt sân dễ như đặt đồ ăn</p>
+          <h2 class="section-title">Just 3 Simple Steps</h2>
+          <p class="section-subtitle">Booking a court is as easy as ordering food</p>
         </div>
 
         <div class="steps-grid">
           <div class="step">
             <div class="step-connector"></div>
             <div class="step-number">01</div>
-            <h3 class="step-title">Tìm sân</h3>
-            <p class="step-desc">Chọn môn, địa điểm</p>
+            <h3 class="step-title">Find</h3>
+            <p class="step-desc">Choose sport, location</p>
           </div>
 
           <div class="step">
             <div class="step-connector"></div>
             <div class="step-number">02</div>
-            <h3 class="step-title">Đặt chỗ</h3>
-            <p class="step-desc">Chọn sân, điền info</p>
+            <h3 class="step-title">Reserve</h3>
+            <p class="step-desc">Pick court, fill details</p>
           </div>
 
           <div class="step">
             <div class="step-number">03</div>
-            <h3 class="step-title">Thanh toán</h3>
-            <p class="step-desc">Trả online, nhận QR</p>
+            <h3 class="step-title">Pay</h3>
+            <p class="step-desc">Pay online, get QR</p>
           </div>
         </div>
       </div>
@@ -516,10 +522,10 @@
         <div class="venue-section-grid">
           <!-- Left Content -->
           <div class="venue-section-content">
-            <div class="badge">Dành cho chủ sân</div>
-            <h2 class="section-title">Trở Thành Đối Tác Sportis</h2>
+            <div class="badge">For Venue Owners</div>
+            <h2 class="section-title">Become a Sportis Partner</h2>
             <p class="section-subtitle-large">
-              Đưa sân của bạn lên Sportis để tiếp cận hàng nghìn người chơi thể thao mỗi ngày.
+              List your venue on Sportis to reach thousands of sports players every day.
             </p>
 
             <div class="venue-features">
@@ -531,8 +537,8 @@
                   </svg>
                 </div>
                 <div>
-                  <div class="venue-feature-title">Định Giá Thông Minh Tự Động</div>
-                  <div class="venue-feature-desc">Thiết lập quy tắc giá một lần (cuối tuần, giờ vàng, ngày lễ...) và hệ thống sẽ tự động tính toán.</div>
+                  <div class="venue-feature-title">Smart Auto-Pricing</div>
+                  <div class="venue-feature-desc">Set pricing rules once (weekends, peak hours, holidays...) and the system calculates automatically.</div>
                 </div>
               </div>
 
@@ -543,8 +549,8 @@
                   </svg>
                 </div>
                 <div>
-                  <div class="venue-feature-title">Bảo Vệ Doanh Thu No-Show</div>
-                  <div class="venue-feature-desc">Thu hồi tới 50% doanh thu bị mất do khách không đến, đồng thời đảm bảo an toàn pháp lý.</div>
+                  <div class="venue-feature-title">No-Show Revenue Protection</div>
+                  <div class="venue-feature-desc">Recover up to 50% of lost revenue from no-shows, while ensuring legal compliance.</div>
                 </div>
               </div>
 
@@ -557,8 +563,8 @@
                   </svg>
                 </div>
                 <div>
-                  <div class="venue-feature-title">Check-in QR Tự Động</div>
-                  <div class="venue-feature-desc">Khách quét mã, hệ thống thông báo cho nhân viên. Giảm tải công việc lễ tân.</div>
+                  <div class="venue-feature-title">Automatic QR Check-in</div>
+                  <div class="venue-feature-desc">Guests scan the code, staff gets notified. Reduces front desk workload.</div>
                 </div>
               </div>
 
@@ -570,8 +576,8 @@
                   </svg>
                 </div>
                 <div>
-                  <div class="venue-feature-title">Chi Phí Thanh Toán Tối Ưu</div>
-                  <div class="venue-feature-desc">Mức phí giao dịch thấp hơn khoảng 3.5 lần so với chỉ sử dụng cổng thanh toán quốc tế.</div>
+                  <div class="venue-feature-title">Optimized Payment Fees</div>
+                  <div class="venue-feature-desc">Transaction fees approximately 3.5x lower compared to using only international payment gateways.</div>
                 </div>
               </div>
 
@@ -584,13 +590,13 @@
                   </svg>
                 </div>
                 <div>
-                  <div class="venue-feature-title">Sổ Cái Minh Bạch</div>
-                  <div class="venue-feature-desc">Chủ sân luôn biết chính xác mình được trả bao nhiêu và khi nào tiền về tài khoản.</div>
+                  <div class="venue-feature-title">Transparent Ledger</div>
+                  <div class="venue-feature-desc">Venue owners always know exactly how much they're paid and when funds arrive.</div>
                 </div>
               </div>
             </div>
 
-            <a href="/auth/login" class="btn btn-primary">Liên hệ đăng ký đối tác</a>
+            <a href="/auth/login" class="btn btn-primary">Contact us to register</a>
           </div>
 
           <!-- Right Dashboard Card - Enhanced -->
@@ -606,8 +612,8 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="dashboard-title">Dashboard Chủ Sân</h3>
-                  <p class="dashboard-subtitle">Quản lý toàn diện</p>
+                  <h3 class="dashboard-title">Venue Dashboard</h3>
+                  <p class="dashboard-subtitle">Full management</p>
                 </div>
               </div>
 
@@ -622,7 +628,7 @@
                     </svg>
                   </div>
                   <div class="stat-content">
-                    <span class="stat-label">Lượt đặt hôm nay</span>
+                    <span class="stat-label">Bookings today</span>
                     <span class="stat-value">24</span>
                   </div>
                   <span class="stat-trend stat-trend-up">+12%</span>
@@ -635,7 +641,7 @@
                     </svg>
                   </div>
                   <div class="stat-content">
-                    <span class="stat-label">Doanh thu tháng</span>
+                    <span class="stat-label">Monthly revenue</span>
                     <span class="stat-value">45.2M</span>
                   </div>
                   <span class="stat-trend stat-trend-up">+8%</span>
@@ -647,7 +653,7 @@
                     </svg>
                   </div>
                   <div class="stat-content">
-                    <span class="stat-label">Rating trung bình</span>
+                    <span class="stat-label">Average rating</span>
                     <span class="stat-value">4.8 ★</span>
                   </div>
                 </div>
@@ -656,17 +662,17 @@
               <!-- Mini Chart -->
               <div class="dashboard-chart">
                 <div class="chart-header">
-                  <span class="chart-title">Doanh thu 7 ngày</span>
+                  <span class="chart-title">7-day revenue</span>
                   <span class="chart-total">315M</span>
                 </div>
                 <div class="chart-bars">
-                  <div class="chart-bar" style="height: 40%"><span>T2</span></div>
-                  <div class="chart-bar" style="height: 65%"><span>T3</span></div>
-                  <div class="chart-bar" style="height: 55%"><span>T4</span></div>
-                  <div class="chart-bar" style="height: 80%"><span>T5</span></div>
-                  <div class="chart-bar" style="height: 90%"><span>T6</span></div>
-                  <div class="chart-bar chart-bar-highlight" style="height: 100%"><span>T7</span></div>
-                  <div class="chart-bar" style="height: 75%"><span>CN</span></div>
+                  <div class="chart-bar" style="height: 40%"><span>Mon</span></div>
+                  <div class="chart-bar" style="height: 65%"><span>Tue</span></div>
+                  <div class="chart-bar" style="height: 55%"><span>Wed</span></div>
+                  <div class="chart-bar" style="height: 80%"><span>Thu</span></div>
+                  <div class="chart-bar" style="height: 90%"><span>Fri</span></div>
+                  <div class="chart-bar chart-bar-highlight" style="height: 100%"><span>Sat</span></div>
+                  <div class="chart-bar" style="height: 75%"><span>Sun</span></div>
                 </div>
               </div>
             </div>
@@ -682,8 +688,8 @@
                 </svg>
               </div>
               <div class="float-card-content">
-                <span class="float-card-title">Sổ Cái</span>
-                <span class="float-card-desc">Minh bạch 100%</span>
+                <span class="float-card-title">Ledger</span>
+                <span class="float-card-desc">100% transparent</span>
               </div>
             </div>
 
@@ -695,8 +701,8 @@
                 </svg>
               </div>
               <div class="float-card-content">
-                <span class="float-card-title">100+ Cổng</span>
-                <span class="float-card-desc">Thanh toán</span>
+                <span class="float-card-title">100+ Gateways</span>
+                <span class="float-card-desc">Payment</span>
               </div>
             </div>
 
@@ -715,7 +721,7 @@
                 </svg>
               </div>
               <div class="float-card-content">
-                <span class="float-card-title">Phân Cấp</span>
+                <span class="float-card-title">Hierarchy</span>
                 <span class="float-card-desc">Org → Venue → Court</span>
               </div>
             </div>
@@ -728,8 +734,8 @@
     <section class="section section-alt" id="technology">
       <div class="container">
         <div class="section-header section-header-center">
-          <h2 class="section-title">Công Nghệ Khác Biệt</h2>
-          <p class="section-subtitle">Nền tảng được xây dựng với công nghệ chuẩn doanh nghiệp</p>
+          <h2 class="section-title">Differentiating Technology</h2>
+          <p class="section-subtitle">Platform built with enterprise-grade technology</p>
         </div>
 
         <div class="tech-grid tech-grid-6">
@@ -741,10 +747,10 @@
                 <line x1="12" y1="17" x2="12" y2="21"></line>
               </svg>
             </div>
-            <h3 class="tech-title">Sổ Cái Chuẩn Ngân Hàng</h3>
+            <h3 class="tech-title">Bank-Grade Ledger</h3>
             <p class="tech-desc">
-              Mô hình kế toán kép, mỗi giao dịch được lưu như sự kiện bất biến -
-              sẵn sàng cho kiểm toán và chia tiền phức tạp.
+              Double-entry accounting model, every transaction stored as an immutable event —
+              audit-ready and capable of complex payment splitting.
             </p>
           </div>
 
@@ -755,10 +761,10 @@
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
               </svg>
             </div>
-            <h3 class="tech-title">Không Bao Giờ Đặt Trùng</h3>
+            <h3 class="tech-title">Never Double-Book</h3>
             <p class="tech-desc">
-              Cơ chế khóa dữ liệu cấp database đảm bảo không có hai người đặt cùng slot,
-              ngay cả lúc cao điểm.
+              Database-level locking mechanism ensures no two people can book the same slot,
+              even during peak hours.
             </p>
           </div>
 
@@ -769,10 +775,10 @@
                 <line x1="1" y1="10" x2="23" y2="10"></line>
               </svg>
             </div>
-            <h3 class="tech-title">100+ Cổng Thanh Toán</h3>
+            <h3 class="tech-title">100+ Payment Gateways</h3>
             <p class="tech-desc">
-              Tích hợp linh hoạt VNPay, Momo, Stripe, GrabPay, PayPal...
-              Hot-swap theo tỷ lệ thành công hoặc chi phí.
+              Flexible integration with VNPay, Momo, Stripe, GrabPay, PayPal...
+              Hot-swap based on success rate or cost.
             </p>
           </div>
 
@@ -784,10 +790,10 @@
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
               </svg>
             </div>
-            <h3 class="tech-title">Đa Ngôn Ngữ & Đa Quốc Gia</h3>
+            <h3 class="tech-title">Multi-Language & Multi-Country</h3>
             <p class="tech-desc">
-              Hỗ trợ i18n từ gốc: Việt, Anh, Nhật, Hàn, Thái...
-              Đa tiền tệ, múi giờ, quy định pháp lý theo vùng.
+              Native i18n support: Vietnamese, English, Japanese, Korean, Thai...
+              Multi-currency, timezones, regional legal compliance.
             </p>
           </div>
 
@@ -799,10 +805,10 @@
                 <polyline points="2 12 12 17 22 12"></polyline>
               </svg>
             </div>
-            <h3 class="tech-title">Mọi Loại Hình Cho Thuê</h3>
+            <h3 class="tech-title">Every Venue Type</h3>
             <p class="tech-desc">
-              Sân thể thao, phòng tập, bể bơi, studio yoga, phòng billiards...
-              Cấu hình linh hoạt theo từng loại hình.
+              Sports courts, gyms, swimming pools, yoga studios, billiards rooms...
+              Flexible configuration for each venue type.
             </p>
           </div>
 
@@ -817,10 +823,10 @@
                 <circle cx="18" cy="18" r="2"></circle>
               </svg>
             </div>
-            <h3 class="tech-title">Cấu Trúc Phân Cấp Rõ Ràng</h3>
+            <h3 class="tech-title">Clear Hierarchical Structure</h3>
             <p class="tech-desc">
-              Tổ chức → Địa điểm → Sân/Phòng.
-              Phân quyền chi tiết, quản lý tập trung hoặc phân tán.
+              Organization → Venue → Court/Room.
+              Granular permissions, centralized or distributed management.
             </p>
           </div>
         </div>
@@ -832,11 +838,11 @@
       <div class="container">
         <div class="global-grid">
           <div class="global-content">
-            <div class="badge">Sẵn sàng mở rộng</div>
-            <h2 class="section-title">Một Nền Tảng, Không Giới Hạn Địa Lý</h2>
+            <div class="badge">Ready to scale</div>
+            <h2 class="section-title">One Platform, No Geographic Limits</h2>
             <p class="section-subtitle-large">
-              Kiến trúc được thiết kế để hoạt động ở mọi thị trường,
-              tuân thủ quy định địa phương, tích hợp thanh toán bản địa.
+              Architecture designed to operate in any market,
+              compliant with local regulations, integrated with local payment gateways.
             </p>
 
             <div class="global-features">
@@ -846,7 +852,7 @@
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </div>
-                <span>Đa tiền tệ: VND, USD, JPY, KRW, THB, SGD...</span>
+                <span>Multi-currency: VND, USD, JPY, KRW, THB, SGD...</span>
               </div>
               <div class="global-feature">
                 <div class="global-feature-check">
@@ -854,7 +860,7 @@
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </div>
-                <span>Đa ngôn ngữ: Việt, Anh, Nhật, Hàn, Thái, Indo...</span>
+                <span>Multi-language: Vietnamese, English, Japanese, Korean, Thai, Indonesian...</span>
               </div>
               <div class="global-feature">
                 <div class="global-feature-check">
@@ -862,7 +868,7 @@
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </div>
-                <span>Múi giờ tự động theo vị trí địa lý</span>
+                <span>Automatic timezone based on geographic location</span>
               </div>
               <div class="global-feature">
                 <div class="global-feature-check">
@@ -870,7 +876,7 @@
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </div>
-                <span>Thuế khấu trừ theo quy định từng quốc gia</span>
+                <span>Tax withholding per country regulations</span>
               </div>
               <div class="global-feature">
                 <div class="global-feature-check">
@@ -878,7 +884,7 @@
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </div>
-                <span>Cổng thanh toán bản địa: VNPay, PromptPay, GCash, Dana...</span>
+                <span>Local payment gateways: VNPay, PromptPay, GCash, Dana...</span>
               </div>
               <div class="global-feature">
                 <div class="global-feature-check">
@@ -886,7 +892,7 @@
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </div>
-                <span>White-label cho đối tác lớn</span>
+                <span>White-label for large partners</span>
               </div>
             </div>
           </div>
@@ -899,11 +905,11 @@
             <div class="map-overlay">
               <div class="map-overlay-item">
                 <span class="map-overlay-value">7+</span>
-                <span class="map-overlay-label">Quốc gia</span>
+                <span class="map-overlay-label">Countries</span>
               </div>
               <div class="map-overlay-item">
                 <span class="map-overlay-value">100+</span>
-                <span class="map-overlay-label">Cổng thanh toán</span>
+                <span class="map-overlay-label">Payment gateways</span>
               </div>
             </div>
           </div>
@@ -915,63 +921,63 @@
     <section class="section section-alt" id="sports-types">
       <div class="container">
         <div class="section-header section-header-center">
-          <h2 class="section-title">Phù Hợp Mọi Loại Hình</h2>
-          <p class="section-subtitle">Từ sân bóng đến phòng yoga, một nền tảng quản lý tất cả</p>
+          <h2 class="section-title">Every Venue Type Supported</h2>
+          <p class="section-subtitle">From football fields to yoga studios, one platform manages them all</p>
         </div>
 
         <div class="sports-types-grid">
           <div class="sport-type-card">
             <span class="sport-type-icon">🎾</span>
-            <span class="sport-type-name">Sân Tennis</span>
+            <span class="sport-type-name">Tennis Court</span>
           </div>
           <div class="sport-type-card">
             <span class="sport-type-icon">🏸</span>
-            <span class="sport-type-name">Sân Cầu Lông</span>
+            <span class="sport-type-name">Badminton Court</span>
           </div>
           <div class="sport-type-card">
             <span class="sport-type-icon">⚽</span>
-            <span class="sport-type-name">Sân Bóng Đá</span>
+            <span class="sport-type-name">Football Field</span>
           </div>
           <div class="sport-type-card">
             <span class="sport-type-icon">🏀</span>
-            <span class="sport-type-name">Sân Bóng Rổ</span>
+            <span class="sport-type-name">Basketball Court</span>
           </div>
           <div class="sport-type-card">
             <span class="sport-type-icon">🏐</span>
-            <span class="sport-type-name">Sân Bóng Chuyền</span>
+            <span class="sport-type-name">Volleyball Court</span>
           </div>
           <div class="sport-type-card">
             <span class="sport-type-icon">🥒</span>
-            <span class="sport-type-name">Sân Pickleball</span>
+            <span class="sport-type-name">Pickleball Court</span>
           </div>
           <div class="sport-type-card">
             <span class="sport-type-icon">🏓</span>
-            <span class="sport-type-name">Phòng Bóng Bàn</span>
+            <span class="sport-type-name">Table Tennis Room</span>
           </div>
           <div class="sport-type-card">
             <span class="sport-type-icon">🎱</span>
-            <span class="sport-type-name">Phòng Bi-a</span>
+            <span class="sport-type-name">Billiards Room</span>
           </div>
           <div class="sport-type-card">
             <span class="sport-type-icon">🏋️</span>
-            <span class="sport-type-name">Phòng Gym</span>
+            <span class="sport-type-name">Gym</span>
           </div>
           <div class="sport-type-card">
             <span class="sport-type-icon">🧘</span>
-            <span class="sport-type-name">Studio Yoga</span>
+            <span class="sport-type-name">Yoga Studio</span>
           </div>
           <div class="sport-type-card">
             <span class="sport-type-icon">🏊</span>
-            <span class="sport-type-name">Bể Bơi</span>
+            <span class="sport-type-name">Swimming Pool</span>
           </div>
           <div class="sport-type-card">
             <span class="sport-type-icon">⛳</span>
-            <span class="sport-type-name">Sân Golf</span>
+            <span class="sport-type-name">Golf Course</span>
           </div>
         </div>
 
         <p class="sports-types-note">
-          ...và nhiều loại hình khác. Hệ thống cho phép tùy chỉnh theo yêu cầu cụ thể của từng doanh nghiệp.
+          ...and many more. The system allows customization to fit each business's specific requirements.
         </p>
       </div>
     </section>
@@ -980,43 +986,43 @@
     <section class="section" id="comparison">
       <div class="container">
         <div class="section-header section-header-center">
-          <h2 class="section-title">So Sánh Với Cách Truyền Thống</h2>
+          <h2 class="section-title">Compare With Traditional Methods</h2>
         </div>
 
         <div class="comparison-table-wrapper">
           <table class="comparison-table">
             <thead>
               <tr>
-                <th>Tiêu chí</th>
+                <th>Criteria</th>
                 <th class="highlight">Sportis</th>
-                <th>Cách truyền thống</th>
+                <th>Traditional</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Thanh toán nhóm</td>
-                <td class="highlight">Mỗi người tự trả qua link</td>
-                <td>Người tổ chức đi thu tiền</td>
+                <td>Group payment</td>
+                <td class="highlight">Each person pays via link</td>
+                <td>Organizer collects from everyone</td>
               </tr>
               <tr>
-                <td>Đặt trùng slot</td>
-                <td class="highlight">Không thể xảy ra</td>
-                <td>Thường xuyên xảy ra</td>
+                <td>Double booking</td>
+                <td class="highlight">Impossible</td>
+                <td>Happens frequently</td>
               </tr>
               <tr>
-                <td>Xử lý vắng mặt</td>
-                <td class="highlight">Tự động + tuân thủ luật</td>
-                <td>Xử lý thủ công hoặc không có</td>
+                <td>No-show handling</td>
+                <td class="highlight">Automatic + legally compliant</td>
+                <td>Manual or non-existent</td>
               </tr>
               <tr>
-                <td>Định giá linh hoạt</td>
-                <td class="highlight">Tự động theo quy tắc</td>
-                <td>Điều chỉnh thủ công</td>
+                <td>Dynamic pricing</td>
+                <td class="highlight">Automatic rule-based</td>
+                <td>Manual adjustments</td>
               </tr>
               <tr>
-                <td>Phí thanh toán</td>
-                <td class="highlight">~1% (cổng nội địa)</td>
-                <td>~3.5% (cổng quốc tế)</td>
+                <td>Payment fees</td>
+                <td class="highlight">~1% (local gateways)</td>
+                <td>~3.5% (international gateways)</td>
               </tr>
             </tbody>
           </table>
@@ -1024,15 +1030,76 @@
       </div>
     </section>
 
+    <!-- Coming Soon / Roadmap Section -->
+    <section class="section section-alt" id="coming-soon">
+      <div class="container">
+        <div class="section-header section-header-center">
+          <div class="badge badge-center" style="background: linear-gradient(135deg, var(--primary), #8b5cf6); color: #fff; border: none;">Coming Soon</div>
+          <h2 class="section-title">What's Next on the Roadmap</h2>
+          <p class="section-subtitle">Planned after core features are stable and proven in production</p>
+        </div>
+
+        <div class="tech-grid" style="grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem;">
+          <!-- Mobile App -->
+          <div class="tech-card" style="position: relative; overflow: hidden; border: 2px dashed var(--border); opacity: 0.92;">
+            <div style="position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, var(--primary), #8b5cf6); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.5px;">Q2 2026</div>
+            <div class="tech-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="tech-title">Mobile App</h3>
+            <p class="tech-desc">
+              Native iOS & Android apps. Book courts on-the-go, get push notifications, scan QR for check-in.
+            </p>
+          </div>
+
+          <!-- AI Voice Booking -->
+          <div class="tech-card" style="position: relative; overflow: hidden; border: 2px dashed var(--border); opacity: 0.92;">
+            <div style="position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, var(--primary), #8b5cf6); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.5px;">Q3 2026</div>
+            <div class="tech-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="23"></line>
+                <line x1="8" y1="23" x2="16" y2="23"></line>
+              </svg>
+            </div>
+            <h3 class="tech-title">AI Voice Booking</h3>
+            <p class="tech-desc">
+              Book courts using voice commands. AI assistant helps find available slots, set alarms, and create calendar reminders automatically.
+            </p>
+          </div>
+
+          <!-- Specialty Venues -->
+          <div class="tech-card" style="position: relative; overflow: hidden; border: 2px dashed var(--border); opacity: 0.92;">
+            <div style="position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, var(--primary), #8b5cf6); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.5px;">Q4 2026</div>
+            <div class="tech-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="tech-title">Specialty Venues</h3>
+            <p class="tech-desc">
+              Expanding beyond traditional sports courts to support swimming pools, billiards halls, gyms, bowling alleys, and more specialty venues.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="section-cta">
       <div class="container">
-        <h2 class="cta-title">Sẵn sàng chơi chưa?</h2>
-        <p class="cta-subtitle">Tham gia cùng hàng nghìn người chơi mỗi ngày</p>
+        <h2 class="cta-title">Ready to play?</h2>
+        <p class="cta-subtitle">Join thousands of players every day</p>
 
         <div class="cta-buttons">
-          <a href="/player/search" class="btn btn-light">Đặt sân ngay</a>
-          <a href="/auth/login" class="btn btn-outline-light">Đăng nhập</a>
+          <a href="/player/search" class="btn btn-light">Book now</a>
+          <a href="/auth/login" class="btn btn-outline-light">Sign in</a>
         </div>
       </div>
     </section>
@@ -1046,8 +1113,8 @@
         <div class="footer-brand">
           <img src="./images/logo/logo-full.png" alt="Sportis" height="40" class="footer-logo">
           <p class="footer-desc">
-            Nền tảng đặt sân thể thao hàng đầu.
-            Đặt sân nhanh chóng, thanh toán an toàn.
+            Leading sports venue booking platform.
+            Book quickly, pay securely.
           </p>
           <div class="footer-social">
             <a href="#" class="social-link">f</a>
@@ -1057,32 +1124,32 @@
 
         <!-- Quick Links -->
         <div class="footer-links">
-          <h4 class="footer-heading">Đặt Sân</h4>
+          <h4 class="footer-heading">Booking</h4>
           <ul>
-            <li><a href="/player/search">Tìm Sân</a></li>
+            <li><a href="/player/search">Find Venues</a></li>
             <li><a href="/player/search?sport=tennis">Tennis</a></li>
-            <li><a href="/player/search?sport=badminton">Cầu Lông</a></li>
-            <li><a href="/player/search?sport=football">Bóng Đá</a></li>
+            <li><a href="/player/search?sport=badminton">Badminton</a></li>
+            <li><a href="/player/search?sport=football">Football</a></li>
           </ul>
         </div>
 
         <!-- Support -->
         <div class="footer-links">
-          <h4 class="footer-heading">Hỗ Trợ</h4>
+          <h4 class="footer-heading">Support</h4>
           <ul>
-            <li><a href="/help">Trợ Giúp</a></li>
-            <li><a href="/contact">Liên Hệ</a></li>
-            <li><a href="/terms">Điều Khoản</a></li>
-            <li><a href="/privacy">Bảo Mật</a></li>
+            <li><a href="/help">Help</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/terms">Terms</a></li>
+            <li><a href="/privacy">Privacy</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>© 2025 Sportis. All rights reserved.</p>
+        <p>&copy; 2026 Sportis. All rights reserved.</p>
         <div class="footer-bottom-links">
-          <a href="/terms">Điều khoản</a>
-          <a href="/privacy">Quyền riêng tư</a>
+          <a href="/terms">Terms</a>
+          <a href="/privacy">Privacy Policy</a>
         </div>
       </div>
     </div>
@@ -1098,11 +1165,11 @@
           <line x1="12" y1="8" x2="12.01" y2="8"></line>
         </svg>
       </div>
-      <h3 class="dev-notice-title">Sportis - Đặt Sân Thể Thao</h3>
-      <p class="dev-notice-desc">Dự kiến release vào 01/03/2026. Đường dẫn sẽ được cập nhật tại đây.</p>
+      <h3 class="dev-notice-title">Sportis - Sports Venue Booking</h3>
+      <p class="dev-notice-desc">Launching March 2026. Visit us at <a href="https://www.sportis-app.com" style="color: var(--primary); font-weight: 600; text-decoration: underline;">www.sportis-app.com</a></p>
       <div class="dev-notice-actions">
         <button class="dev-notice-btn" id="devNoticeClose">
-          Đã hiểu <span class="dev-notice-countdown">(5)</span>
+          Got it <span class="dev-notice-countdown">(5)</span>
         </button>
       </div>
     </div>
@@ -1111,5 +1178,6 @@
   <!-- Leaflet JS CDN -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="script.js"></script>
+
 </body>
 </html>

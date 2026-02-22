@@ -5,17 +5,17 @@
 // Sports data for marquee
 const SPORTS = [
   { id: 'tennis', name: 'Tennis', icon: '🎾', count: 120 },
-  { id: 'badminton', name: 'Cầu lông', icon: '🏸', count: 200 },
-  { id: 'football', name: 'Bóng đá', icon: '⚽', count: 150 },
+  { id: 'badminton', name: 'Badminton', icon: '🏸', count: 200 },
+  { id: 'football', name: 'Football', icon: '⚽', count: 150 },
   { id: 'pickleball', name: 'Pickleball', icon: '🥒', count: 85 },
-  { id: 'basketball', name: 'Bóng rổ', icon: '🏀', count: 60 },
-  { id: 'volleyball', name: 'Bóng chuyền', icon: '🏐', count: 45 },
-  { id: 'table-tennis', name: 'Bóng bàn', icon: '🏓', count: 90 },
+  { id: 'basketball', name: 'Basketball', icon: '🏀', count: 60 },
+  { id: 'volleyball', name: 'Volleyball', icon: '🏐', count: 45 },
+  { id: 'table-tennis', name: 'Table Tennis', icon: '🏓', count: 90 },
   { id: 'golf', name: 'Golf', icon: '⛳', count: 25 },
-  { id: 'swimming', name: 'Bơi lội', icon: '🏊', count: 40 },
-  { id: 'gym', name: 'Phòng gym', icon: '🏋️', count: 180 },
+  { id: 'swimming', name: 'Swimming', icon: '🏊', count: 40 },
+  { id: 'gym', name: 'Gym', icon: '🏋️', count: 180 },
   { id: 'yoga', name: 'Yoga', icon: '🧘', count: 75 },
-  { id: 'billiards', name: 'Bi-a', icon: '🎱', count: 55 },
+  { id: 'billiards', name: 'Billiards', icon: '🎱', count: 55 },
   { id: 'bowling', name: 'Bowling', icon: '🎳', count: 20 },
   { id: 'squash', name: 'Squash', icon: '🎾', count: 15 },
   { id: 'futsal', name: 'Futsal', icon: '⚽', count: 70 },
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initGlobalMap();
   initDevNotice();
+  initAnnouncementBar();
 });
 
 /**
@@ -245,10 +246,10 @@ function initGlobalMap() {
 
   // Country markers with popup info
   const countries = [
-    { lat: 14.0583, lng: 108.2772, name: 'Việt Nam', flag: '🇻🇳', status: 'Live', currency: 'VND', gateways: 'VNPay, Momo, ZaloPay' },
-    { lat: 15.8700, lng: 100.9925, name: 'Thái Lan', flag: '🇹🇭', status: 'Ready', currency: 'THB', gateways: 'PromptPay, TrueMoney' },
-    { lat: 36.2048, lng: 138.2529, name: 'Nhật Bản', flag: '🇯🇵', status: 'Ready', currency: 'JPY', gateways: 'Stripe JP, PayPay' },
-    { lat: 35.9078, lng: 127.7669, name: 'Hàn Quốc', flag: '🇰🇷', status: 'Ready', currency: 'KRW', gateways: 'Toss, KakaoPay' },
+    { lat: 14.0583, lng: 108.2772, name: 'Vietnam', flag: '🇻🇳', status: 'Live', currency: 'VND', gateways: 'VNPay, Momo, ZaloPay' },
+    { lat: 15.8700, lng: 100.9925, name: 'Thailand', flag: '🇹🇭', status: 'Ready', currency: 'THB', gateways: 'PromptPay, TrueMoney' },
+    { lat: 36.2048, lng: 138.2529, name: 'Japan', flag: '🇯🇵', status: 'Ready', currency: 'JPY', gateways: 'Stripe JP, PayPay' },
+    { lat: 35.9078, lng: 127.7669, name: 'South Korea', flag: '🇰🇷', status: 'Ready', currency: 'KRW', gateways: 'Toss, KakaoPay' },
     { lat: 1.3521, lng: 103.8198, name: 'Singapore', flag: '🇸🇬', status: 'Ready', currency: 'SGD', gateways: 'PayNow, GrabPay' },
     { lat: -0.7893, lng: 113.9213, name: 'Indonesia', flag: '🇮🇩', status: 'Ready', currency: 'IDR', gateways: 'GoPay, Dana, OVO' },
     { lat: 12.8797, lng: 121.7740, name: 'Philippines', flag: '🇵🇭', status: 'Ready', currency: 'PHP', gateways: 'GCash, Maya' }
@@ -278,8 +279,8 @@ function initGlobalMap() {
           <span class="popup-status ${country.status.toLowerCase()}">${country.status}</span>
         </div>
         <div class="popup-info">
-          <div><strong>Tiền tệ:</strong> ${country.currency}</div>
-          <div><strong>Cổng TT:</strong> ${country.gateways}</div>
+          <div><strong>Currency:</strong> ${country.currency}</div>
+          <div><strong>Gateways:</strong> ${country.gateways}</div>
         </div>
       </div>
     `;
@@ -335,5 +336,21 @@ function initDevNotice() {
       clearInterval(timer);
       closeNotice();
     }
+  });
+}
+
+/**
+ * Initialize Announcement Bar close behavior
+ */
+function initAnnouncementBar() {
+  const bar = document.getElementById('announcementBar');
+  const closeBtn = document.getElementById('closeAnnouncement');
+  const header = document.getElementById('header');
+
+  if (!bar || !closeBtn || !header) return;
+
+  closeBtn.addEventListener('click', () => {
+    bar.style.display = 'none';
+    header.classList.add('no-announcement');
   });
 }
